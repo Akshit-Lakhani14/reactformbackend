@@ -1,7 +1,7 @@
 var express = require("express");
 const bodyParser = require('body-parser');
 const cors = require("cors");
-const PORT = process.env.port || 1002
+const port = process.env.PORT || 1002
 
 const app = express();
 
@@ -28,6 +28,6 @@ app.post('/store-data',(req, res) => {
 
 
 //PORT
-app.listen(PORT, function () {
+app.listen(port, function () {
   console.log("Node app is running.");
 });

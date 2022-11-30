@@ -1,6 +1,7 @@
 var express = require("express");
 const bodyParser = require('body-parser');
 const cors = require("cors");
+const PORT = process.env.port || 1002
 
 const app = express();
 
@@ -19,11 +20,14 @@ app.post('/store-data',(req, res) => {
  console.log(data.forms);
  var csv = JSONToCSV(data.forms, { fields: ["number", "name", "quantity","price","amount" ]});
     fs.writeFileSync("./destination.csv", csv);
- 
+    res.download("destination.csv");
+    res.end;
 })
 
 
+
+
 //PORT
-app.listen(1002, function () {
+app.listen(PORT, function () {
   console.log("Node app is running.");
 });
